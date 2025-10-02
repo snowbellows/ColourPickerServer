@@ -1,27 +1,10 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Picker";
+    ViewData["Title"] = "Artwork";
 }
 <div class="container">
-    <div class="row p-1">
-        <div class="col-1">User</div>
-        <div class="col-5"><input type="text" id="userInput" /></div>
-    </div>
-    <div class="row p-1">
-        <div class="col-1">Colour</div>
-        <div class="col-5"><input type="color" class="w-100" id="colourInput" /></div>
-    </div>
-    <div class="row p-1">
-        <div class="col-6">
-            <hr />
-        </div>
-    </div>
-    <div class="row p-1">
-        <div class="col-6">
-            <ul id="messagesList"></ul>
-        </div>
-    </div>
+
 </div>
-<script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
+<script src="~/js/p5/lib/p5.min.js"></script>
+<script src="~/js/sketch.js"></script>

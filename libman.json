@@ -8,6 +8,13 @@
       "files": [
         "dist/browser/signalr.js"
       ]
+    },
+    {
+      "library": "p5@2.0.5",
+      "destination": "wwwroot/js/p5",
+      "files": [
+        "lib/p5.min.js"
+      ]
     }
   ]
 }

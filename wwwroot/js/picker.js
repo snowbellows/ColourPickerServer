@@ -1,7 +1,7 @@
 'use strict';
 
 var connection = new signalR.HubConnectionBuilder()
-  .withUrl('/chatHub')
+  .withUrl('/colourPickerHub')
   .configureLogging(signalR.LogLevel.Information)
   .build();
 

@@ -24,6 +24,6 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 app.MapRazorPages().WithStaticAssets();
-app.MapHub<ColourPickerHub>("/chatHub");
+app.MapHub<ColourPickerHub>("/colourPickerHub");
 
 app.Run();
