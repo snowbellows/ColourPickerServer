@@ -1,6 +1,6 @@
 let pickerConnection;
-let userString;
 let colourString;
+let userColours = {};
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -14,8 +14,9 @@ async function connectSignalR() {
     .build();
 
   pickerConnection.on('ReceiveMessage', function (user, message) {
-    userString = user;
     colourString = message;
+
+    userColours[user] = message;
   });
   try {
     await pickerConnection.start();
@@ -32,4 +33,16 @@ function draw() {
     noFill();
   }
   circle(50, 50, 30);
+
+  Object.entries(userColours).forEach(([u, c], i) => {
+    push();
+    translate(50, 100 + 30 * i);
+    fill(c);
+    stroke(c);
+    square(0, 0, 16);
+    fill(0);
+    noStroke();
+    text(u, 24, 16);
+    pop();
+  });
 }
