@@ -2,11 +2,13 @@ let pickerConnection;
 let colourString;
 let userColours = {};
 
+// p5js function
 function setup() {
   createCanvas(windowWidth, windowHeight);
   connectSignalR();
 }
 
+// sets up SignalR connection to ColourPickerHub, attaches message handler and then starts connection
 async function connectSignalR() {
   pickerConnection = new signalR.HubConnectionBuilder()
     .withUrl('/colourPickerHub')
@@ -14,8 +16,9 @@ async function connectSignalR() {
     .build();
 
   pickerConnection.on('ReceiveMessage', function (user, message) {
+    // set current colour
     colourString = message;
-
+    // add user and colour to object map or updates colour if user already exists
     userColours[user] = message;
   });
   try {
@@ -25,7 +28,9 @@ async function connectSignalR() {
   }
 }
 
+// p5js function, called in a loop
 function draw() {
+  // may not have received message updating colour yet
   if (colourString) {
     fill(colourString);
     stroke(colourString);
@@ -34,6 +39,7 @@ function draw() {
   }
   circle(50, 50, 30);
 
+  // swatch colours next to user names
   Object.entries(userColours).forEach(([u, c], i) => {
     push();
     translate(50, 100 + 30 * i);
